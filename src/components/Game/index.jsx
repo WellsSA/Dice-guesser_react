@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Board, Monitoring, Square } from './styles';
+import { Container, Monitoring } from './styles';
+import Board from '../Board';
 
 export default function Game() {
-  const currentPlayer = 1;
+  const currentPlayer = {
+    id: 1,
+    marker: 'X',
+  };
   const [squares, setSquares] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
 
   useEffect(() => {
@@ -14,23 +18,14 @@ export default function Game() {
     setSquares(oldState => {
       console.log(oldState);
       const newState = [...oldState];
-      newState[index] = currentPlayer;
+      newState[index] = currentPlayer.id;
       return newState;
     });
   }
 
   return (
     <Container>
-      <Board>
-        {squares.map((value, index) => (
-          <Square
-            key={index}
-            index={index}
-            value={value}
-            onClick={() => markSquare(index)}
-          />
-        ))}
-      </Board>
+      <Board squares={squares} onTap={markSquare} />
       <Monitoring />
     </Container>
   );
