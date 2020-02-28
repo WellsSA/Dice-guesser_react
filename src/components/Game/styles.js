@@ -6,8 +6,9 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const Monitoring = styled.div`
+export const Monitoring = styled.ul`
   display: flex;
+  flex-direction: column;
   flex: 1;
   background: #ff0;
 `;

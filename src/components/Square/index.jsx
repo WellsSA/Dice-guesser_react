@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 
-export default function Square({ index, value, onTap }) {
+function Square({ index, value, onTap }) {
   function handleSquareClick() {
     onTap(index);
   }
@@ -13,6 +13,8 @@ export default function Square({ index, value, onTap }) {
 
 Square.propTypes = {
   index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
+  value: PropTypes.string.isRequired,
   onTap: PropTypes.func.isRequired,
 };
+
+export default memo(Square);
