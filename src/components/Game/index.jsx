@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
-import { Container, Monitoring } from './styles';
+import { Container } from './styles';
+
 import Board from '../Board';
+import Monitoring from '../Monitoring';
+import Play from '../Monitoring/Play';
 
 export default function Game() {
   const players = [
@@ -38,12 +41,20 @@ export default function Game() {
     });
   }
 
+  function backInPlay(index) {
+    setSquares(plays[index]);
+  }
+
   return (
     <Container>
       <Board squares={squares} players={players} onTap={markSquare} />
       <Monitoring>
-        {plays.map((play, index) => (
-          <li key={index}>{play}</li>
+        {plays.map((_, index) => (
+          <Play key={index} index={index}>
+            <button type="button" onClick={() => backInPlay(index)}>
+              Back to play {index}
+            </button>
+          </Play>
         ))}
       </Monitoring>
     </Container>

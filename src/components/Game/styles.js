@@ -5,10 +5,3 @@ export const Container = styled.div`
   height: 600px;
   display: flex;
 `;
-
-export const Monitoring = styled.ul`
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  background: #ff0;
-`;
