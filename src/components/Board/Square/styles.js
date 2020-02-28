@@ -11,6 +11,7 @@ export const Container = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 40px;
+  border-radius: 4px;
 
   &:hover {
     background: ${transparentize(0.8, darken(0.2, '#282c33'))};

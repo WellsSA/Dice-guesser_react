@@ -1,31 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 
 import { Container } from './styles';
-
+import PlayersData from './players.data';
 import Board from '../Board';
 import Monitoring from '../Monitoring';
-import Play from '../Monitoring/Play';
 
 export default function Game() {
-  const players = [
-    {
-      marker: '',
-    },
-    {
-      marker: 'X',
-    },
-    {
-      marker: 'O',
-    },
-  ];
-
+  const players = PlayersData;
   const [currentPlayer, setCurrentPlayer] = useState(1);
   const [squares, setSquares] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [plays, setPlays] = useState([]);
-
-  useEffect(() => {
-    console.log(squares);
-  }, [squares]);
 
   function markSquare(index) {
     if (squares[index] !== 0) return;
@@ -48,15 +32,7 @@ export default function Game() {
   return (
     <Container>
       <Board squares={squares} players={players} onTap={markSquare} />
-      <Monitoring>
-        {plays.map((_, index) => (
-          <Play key={index} index={index}>
-            <button type="button" onClick={() => backInPlay(index)}>
-              Back to play {index}
-            </button>
-          </Play>
-        ))}
-      </Monitoring>
+      <Monitoring plays={plays} onTap={backInPlay} />
     </Container>
   );
 }

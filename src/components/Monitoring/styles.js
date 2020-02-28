@@ -9,4 +9,6 @@ export const Container = styled.ul`
   flex: 1;
   background: ${transparentize(0.6, darken(0.1, '#282c33'))};
   padding: 12px;
+  border-radius: 4px;
+  overflow: auto;
 `;
