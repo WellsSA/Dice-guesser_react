@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { darken, transparentize } from 'polished';
 
 export default createGlobalStyle`
   @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap');
@@ -37,5 +38,17 @@ export default createGlobalStyle`
 
   button {
     cursor: pointer;
+  }
+
+  button {
+    border: none;
+    border: 1px solid #67daf9;
+    color: #fff;
+    padding: 4px 8px;
+    background: transparent;
+    border-radius: 4px;
+    &:hover {
+      background: ${transparentize(0.8, darken(0.2, '#282c33'))};
+    }
   }
 `;
