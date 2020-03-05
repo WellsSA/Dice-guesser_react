@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 
 import { Container, Sideboard, GameOptions } from './styles';
+import { winMatrixData, checkWin, checkBestPlay } from './game.data';
 import PlayersData from './players.data';
 import Board from '../Board';
 import Monitoring from '../Monitoring';
@@ -19,16 +20,25 @@ export default function Game() {
   const [squares, setSquares] = useState(INITIAL_STATE.initialSquares);
   const [plays, setPlays] = useState(INITIAL_STATE.initialPlays);
 
+  function handleWin(matrix) {
+    const win = checkWin(winMatrixData, matrix);
+    if (win) {
+      alert(`O Jogador ${players[win].marker} venceu`);
+    }
+  }
+
   function markSquare(index) {
     if (squares[index] !== 0) return;
 
     setCurrentPlayer(oldPlayer => (oldPlayer === 1 ? 2 : 1));
 
     setPlays(oldState => [...oldState, squares]);
+
     setSquares(oldState => {
-      console.log(oldState);
       const newState = [...oldState];
       newState[index] = currentPlayer;
+
+      handleWin(newState);
       return newState;
     });
   }
