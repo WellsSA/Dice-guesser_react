@@ -27,9 +27,7 @@ export default function Game() {
     }
   }
 
-  function markSquare(index) {
-    if (squares[index] !== 0) return;
-
+  function play(index) {
     setCurrentPlayer(oldPlayer => (oldPlayer === 1 ? 2 : 1));
 
     setPlays(oldState => [...oldState, squares]);
@@ -41,6 +39,12 @@ export default function Game() {
       handleWin(newState);
       return newState;
     });
+  }
+
+  function markSquare(index) {
+    if (squares[index] !== 0) return;
+
+    play(index);
   }
 
   function backInPlay(index) {
@@ -56,7 +60,16 @@ export default function Game() {
   }
 
   function randomPlay() {
-    alert('random play');
+    const [firstTry, secondTry, thirdTry] = checkBestPlay(
+      winMatrixData,
+      squares
+    );
+
+    if (!squares[firstTry]) return play(firstTry);
+    if (!squares[secondTry]) return play(secondTry);
+    if (!squares[thirdTry]) return play(thirdTry);
+
+    return randomPlay();
   }
 
   return (

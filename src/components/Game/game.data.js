@@ -35,7 +35,7 @@ function checkRepetitions(array) {
 
 function checkGreaterRepetition(winMatrix, board, callback) {
   let greaterRepetition = {
-    total: 1,
+    total: 0,
     index: -1,
     value: 0,
   };
@@ -81,11 +81,21 @@ function checkWin(winMatrix, board) {
 }
 
 function checkBestPlay(winMatrix, board) {
-  checkGreaterRepetition(winMatrix, board, (repetition, index) => {
+  return checkGreaterRepetition(winMatrix, board, (repetition, index) => {
     if (repetition === 2) {
-      console.log('Best play:', winMatrix[index]);
+      const bestPlay = winMatrix[index];
+      if (
+        board[bestPlay[0]] === 0 ||
+        board[bestPlay[1]] === 0 ||
+        board[bestPlay[2]] === 0
+      ) {
+        console.log('Best play:', bestPlay);
+
+        return bestPlay;
+      }
     }
-    // console.log({repetition, index, value})
+
+    return winMatrix[Math.floor(Math.random() * 7 + 1)];
   });
 }
 
