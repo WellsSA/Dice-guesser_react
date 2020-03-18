@@ -23,5 +23,37 @@ export const Sideboard = styled.ul`
 export const Board = styled.div`
   width: 70%;
   display: flex;
+  flex-direction: column;
   flex-wrap: wrap;
+`;
+
+export const Dices = styled.div`
+  color: #fff; // 67daf9
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    width: 100px;
+    height: 100px;
+    padding: 5px;
+    margin: 5px;
+    border: 1px solid #fff;
+    position: relative;
+
+    &::before {
+      content: 'Dado';
+      position: absolute;
+      top: -20px;
+      left: 4px;
+      padding: 1px;
+      background: #282c33;
+    }
+  }
 `;

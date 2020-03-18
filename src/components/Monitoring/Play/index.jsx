@@ -3,17 +3,16 @@ import PropTypes from 'prop-types';
 
 import { Container } from './styles';
 
-export default function Play({ index, onTap }) {
+export default function Play({ right, children }) {
   return (
-    <Container>
-      <button type="button" onClick={() => onTap(index)}>
-        Back to play {index}
-      </button>
+    <Container right={right}>
+      <button type="button">{children}</button>
     </Container>
   );
 }
 
 Play.propTypes = {
-  index: PropTypes.number.isRequired,
-  onTap: PropTypes.func.isRequired,
+  right: PropTypes.bool.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  children: PropTypes.any.isRequired,
 };

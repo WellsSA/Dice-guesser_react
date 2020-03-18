@@ -4,17 +4,23 @@ import { Container } from './styles';
 
 import Play from './Play';
 
-export default function Monitoring({ plays, onTap }) {
+export default function Monitoring({ plays }) {
   return (
     <Container>
-      {plays.map((_, index) => (
-        <Play key={index} index={index} onTap={onTap} />
-      ))}
+      {plays.map((play, index) => {
+        const { diceOne, diceTwo, guess, right } = play;
+
+        return (
+          <Play
+            key={index}
+            right={right}
+          >{`${diceOne} + ${diceTwo} = ${guess} ?`}</Play>
+        );
+      })}
     </Container>
   );
 }
 
 Monitoring.propTypes = {
   plays: PropTypes.arrayOf(PropTypes.any).isRequired,
-  onTap: PropTypes.func.isRequired,
 };
