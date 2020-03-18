@@ -19,3 +19,9 @@ export const Sideboard = styled.ul`
   padding: 12px;
   border-radius: 4px;
 `;
+
+export const Board = styled.div`
+  width: 70%;
+  display: flex;
+  flex-wrap: wrap;
+`;
